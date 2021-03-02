@@ -67,6 +67,8 @@ app.use((req, res, next) => {
 
 // Routes
 
+app.use('/api/v1/products');
+
 
 app.all('*', (req, res, next) => {
 
