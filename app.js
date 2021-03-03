@@ -10,6 +10,8 @@ const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const cors = require('cors');
 
+const ProductRouter = require('./routes/productRoute');
+const Product = require('./models/productModel');
 
 // start express app
 const app = express();
@@ -67,7 +69,7 @@ app.use((req, res, next) => {
 
 // Routes
 
-app.use('/api/v1/products');
+app.use('/api/v1/products', ProductRouter);
 
 
 app.all('*', (req, res, next) => {

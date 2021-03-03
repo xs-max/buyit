@@ -28,9 +28,12 @@ const productSchema = new mongoose.Schema({
     },
     condition: {
         type: String,
-        required: []
+        required: [true, 'A product must have a location']
     },
-    negotiable: Boolean
+    negotiable: {
+        type: Boolean,
+        default: false
+    }
 })
 
 const Product = mongoose.model('Product', productSchema);

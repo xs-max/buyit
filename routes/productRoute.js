@@ -12,3 +12,5 @@ router.route('/:id')
     .get(getProduct)
     .patch(patchProduct)
     .delete(deleteProduct)
+
+module.exports = router;
