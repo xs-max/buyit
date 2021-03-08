@@ -12,6 +12,11 @@ const productSchema = new mongoose.Schema({
         minlength: [15, 'Description is too short'],
         maxlength: [150, 'Description must not Exceed 150 characters']
     },
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: [true, 'A product must belong to a user']
+    },
     price: {
         type: Number,
         required: [true, 'A product must have a price']
