@@ -1,0 +1,112 @@
+extends base
+
+block content
+    section.content
+        .container-fluid
+            .row
+                .col-md-3
+                    // Profile Image
+                    .card.card-primary.card-outline
+                        .card-body.box-profile
+                            .text-center
+                                img.profile-user-img.img-fluid.img-circle(src='../../dist/img/user4-128x128.jpg' alt='User profile picture')
+                            h3.profile-username.text-center Nina Mcintire
+                            p.text-muted.text-center Software Engineer
+                            ul.list-group.list-group-unbordered.mb-3
+                                li.list-group-item
+                                    b Followers
+                                    a.float-right 1,322
+                                li.list-group-item
+                                    b Following
+                                    a.float-right 543
+                                li.list-group-item
+                                    b Friends
+                                    a.float-right 13,287
+                            a.btn.btn-primary.btn-block(href='#')
+                                b Follow
+                        // /.card-body
+                        // /.card
+                        // About Me Box
+                    .card.card-primary
+                        .card-header
+                            h3.card-title About Me
+                        // /.card-header
+                        .card-body
+                            strong
+                                i.fas.fa-book.mr-1
+                                |  Education
+                            p.text-muted
+                                | B.S. in Computer Science from the University of Tennessee at Knoxville
+                            hr
+                            strong
+                                i.fas.fa-map-marker-alt.mr-1
+                                |  Location
+                            p.text-muted Malibu, California
+                            hr
+                            strong
+                                i.fas.fa-pencil-alt.mr-1
+                                |  Skills
+                            p.text-muted
+                                span.tag.tag-danger UI Design
+                                span.tag.tag-success Coding
+                                span.tag.tag-info Javascript
+                                span.tag.tag-warning PHP
+                                span.tag.tag-primary Node.js
+                            hr
+                            strong
+                                i.far.fa-file-alt.mr-1
+                                |  Notes
+                            p.text-muted
+                                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.
+                        // /.card-body
+                        // /.card
+                        // /.col
+                .col-md-9
+                    .card.card-primary
+                        .card-header
+                            h3.card-title User Info
+                        // /.card-header
+                        // form start
+                        form(role='form' method='post' action='' enctype='multipart/form-data')
+                            .card-body
+                                .form-group
+                                    label(for='firstname') FullName
+                                    input#exampleInputEmail1.form-control(type='text' name='name' value='Godwin' readonly='')
+                                .form-group
+                                    label(for='middlename') Phone
+                                    input#exampleInputEmail1.form-control(type='text' name='phone' class='@erro' value='+2348146622811' readonly='')
+                                .form-group
+                                    label(for='email') Email
+                                    input#exampleInputEmail1.form-control(type='text' name='email' value='ogbujigodwin@yahoo.com' readonly='')
+                                .form-group
+                                    label(for='exampleInputFile')
+                                        | Upload image  
+                                        span  &nbsp; &nbsp; &nbsp; &nbsp; must be less than 2mb
+                                    .input-group
+                                        .custom-file
+                                            input#exampleInputFile.custom-file-input(type='file' name='image' required='')
+                                            label.custom-file-label(for='exampleInputFile') Choose file
+                            // /.card-body
+                            .card-footer
+                                button.btn.btn-primary(type='submit' name='update') Submit
+                    // /.nav-tabs-custom
+                    // About Me Box
+                    .card.card-primary
+                        .card-header
+                            h3.card-title Change Password
+                        // /.card-header
+                        .card-body
+                            form(action='' method='post')
+                                .form-group
+                                    label(for='product-name') Old Password
+                                    input#exampleInputEmail1.form-control(type='password' name='oldpassword' placeholder='Enter Old password' required='')
+                                .form-group
+                                    label(for='product-name') New Password
+                                    input#exampleInputEmail1.form-control(type='password' name='password' placeholder='Enter new password' required='')
+                                .form-group
+                                    label(for='product-name') Confirm password
+                                    input#exampleInputEmail1.form-control(type='password' name='c_password' placeholder='Confirm password' required='')
+                                .card-footer
+                                    button.btn.btn-primary(type='submit' name='changepassword') Submit
+                        // /.card-body
+                        // /.card

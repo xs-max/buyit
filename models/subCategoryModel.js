@@ -10,6 +10,11 @@ const subCategorySchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'Category'
     }
+}
+,
+{
+    toJSON: {virtuals: true},
+    toObject: {virtuals: true}
 })
 
 const SubCategory = mongoose.model('SubCategory', subCategorySchema);

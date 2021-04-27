@@ -11,14 +11,7 @@ exports.deleteOne = Model => catchAsync(async (req, res, next) => {
             status: 'success',
             data: null
         })
-    // try{
-        
-    // }catch(err){
-    //     res.status(400).json({
-    //         status: 'failed',
-    //         message: err
-    //     })
-    // }
+    
     
 });
 
@@ -36,14 +29,7 @@ exports.updateOne = Model => catchAsync(async (req, res, next) => {
             data: doc
         }
     }) 
-    // try{
-        
-    // }catch (err) {
-    //     res.status(400).json({
-    //         status: 'failed',
-    //         message: err
-    //     })
-    // }
+    // try{// }
     
 });
 
@@ -56,14 +42,7 @@ exports.createOne = Model => catchAsync(async (req, res, next) => {
                 data : doc
             }
         });
-    // try{
-        
-    // }catch (err) {
-    //     res.status(404).json({
-    //         status: 'failed',
-    //         message: 'Invalid Data sent'
-    //     })
-    // }
+    
    
 });
 
@@ -80,14 +59,7 @@ exports.getOne = (Model, popOtions) => catchAsync(async (req, res, next) => {
                 data: doc
             }
         })
-    // try {
-        
-    // }catch (err) {
-    //     res.status(404).json({
-    //         status: 'failed',
-    //         message: 'Ivalid ID'
-    //     })
-    // }
+    
     
 });
 
@@ -112,13 +84,6 @@ exports.getAll = Model => catchAsync(async (req, res, next) => {
                 data: doc
             }
         })
-    // try{
-        
-    // }catch (err) {
-    //     res.status(404).json({
-    //         status: 'failed',
-    //         message: err.message
-    //     })
-    // }
+    
     
 });

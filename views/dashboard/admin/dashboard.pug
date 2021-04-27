@@ -1,0 +1,113 @@
+extends base
+
+block content
+  section.content
+    .container-fluid
+      // Small boxes (Stat box)
+      .row
+        .col-lg-3.col-6
+          // small box
+          .small-box.bg-info
+            .inner
+              h3 150
+              p New Orders
+            .icon
+              i.ion.ion-bag
+            a.small-box-footer(href='#')
+              | More info 
+              i.fas.fa-arrow-circle-right
+        // ./col
+        .col-lg-3.col-6
+          // small box
+          .small-box.bg-success
+            .inner
+              h3
+                | 53
+                sup(style='font-size: 20px') %
+              p Bounce Rate
+            .icon
+              i.ion.ion-stats-bars
+            a.small-box-footer(href='#')
+              | More info 
+              i.fas.fa-arrow-circle-right
+        // ./col
+        .col-lg-3.col-6
+          // small box
+          .small-box.bg-warning
+            .inner
+              h3 44
+              p User Registrations
+            .icon
+              i.ion.ion-person-add
+            a.small-box-footer(href='#')
+              | More info 
+              i.fas.fa-arrow-circle-right
+        // ./col
+        .col-lg-3.col-6
+          // small box
+          .small-box.bg-danger
+            .inner
+              h3 65
+              p Unique Visitors
+            .icon
+              i.ion.ion-pie-graph
+            a.small-box-footer(href='#')
+              | More info 
+              i.fas.fa-arrow-circle-right
+        // ./col
+        // /.row
+      .row
+        .col-12
+          .card
+            .card-header
+              h3.card-title Responsive Hover Table
+              .card-tools
+                .input-group.input-group-sm(style='width: 150px;')
+                  input.form-control.float-right(type='text' name='table_search' placeholder='Search')
+                  .input-group-append
+                    button.btn.btn-default(type='submit')
+                      i.fas.fa-search
+            // /.card-header
+            .card-body.table-responsive.p-0
+              table.table.table-hover.text-nowrap
+                thead
+                  tr
+                    th ID
+                    th User
+                    th Date
+                    th Status
+                    th Reason
+                tbody
+                  tr
+                    td 183
+                    td John Doe
+                    td 11-7-2014
+                    td
+                      span.tag.tag-success Approved
+                    td Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
+                  tr
+                    td 219
+                    td Alexander Pierce
+                    td 11-7-2014
+                    td
+                      span.tag.tag-warning Pending
+                    td Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
+                  tr
+                    td 657
+                    td Bob Doe
+                    td 11-7-2014
+                    td
+                      span.tag.tag-primary Approved
+                    td Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
+                  tr
+                    td 175
+                    td Mike Doe
+                    td 11-7-2014
+                    td
+                      span.tag.tag-danger Denied
+                    td Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
+              // /.card-body
+    // /.card
+
+      // /.container-fluid
+      // /.content

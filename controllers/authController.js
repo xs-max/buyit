@@ -13,11 +13,6 @@ const signToken = id => {
 
 const createSendToken = (user, statusCode, req, res) => {
     const token = signToken(user);
-    // const cookieOptions = {
-    //     expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
-    //     httpOnly: true,
-    //     secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
-    // }
     
     res.cookie('jwt', token, {
         expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
@@ -48,16 +43,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
     await new Email(newUser, url).sendWelcome();
 
     createSendToken(newUser, 201, req, res);
-    // const token = signToken(newUser._id);
-
-
-    // res.status(201).json({
-    //     status: 'Success',
-    //     token,
-    //     data: {
-    //         user: newUser
-    //     }
-    // })
+    
 });
 
 exports.login = catchAsync(async(req, res, next) => {
@@ -76,11 +62,7 @@ exports.login = catchAsync(async(req, res, next) => {
 
     // 3 Send token
     createSendToken(user, 200, req, res);
-    // const token = signToken(user._id);
-    // res.status(200).json({
-    //     status: 'success',
-    //     token
-    // });
+    
 });
 
 exports.logout = (req, res) => {
@@ -121,7 +103,6 @@ exports.protect = catchAsync(async (req, res, next) => {
     // Grant Access to protected route
     req.user = freshUser;
     res.locals.user = freshUser;
-    // console.log(req.user);
     next();
 });
 
@@ -178,16 +159,9 @@ exports.forgotPassword = catchAsync(async(req, res, next) => {
     await user.save({validateBeforeSave: false});
 
     //3) Send it to user Email
-    // console.log(resetUrl);
-    // const message = `Forgot your password? Submit a PATCH request your new password and passwordConfirm to
-    // :${resetUrl}.\nIf you didn't forget your password please ignore this email!`;
-    // // console.log(message);
+    
     try{
-        // await sendEmail({
-        //     email: req.body.email,
-        //     subject: 'Your Password reset token (valid for 10mins)',
-        //     message: message
-        // });
+        
         const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/users/resetPassword/${resetToken}`;
         await new Email(user, resetUrl).sendPasswordReset();
     
@@ -226,11 +200,7 @@ exports.resetPassword = catchAsync( async (req, res, next) => {
 
     //4) Log the user in, send JWT
     createSendToken(user, 200, req, res);
-    // const token = signToken(user._id);
-    // res.status(200).json({
-    //     status: 'success',
-    //     token
-    // });
+    
 })
 
 exports.updatePassword = catchAsync( async (req, res, next) => {

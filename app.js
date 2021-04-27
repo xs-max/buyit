@@ -14,13 +14,16 @@ const cors = require('cors');
 const AppError = require('./utils/appError');
 const ProductRouter = require('./routes/productRoute');
 const categorytRouter = require('./routes/categoryRoute');
-const Product = require('./models/productModel');
+const subCategorytRouter = require('./routes/subCategoryRoute');
+const viewRouter = require('./routes/viewRoutes');
 
 // start express app
 const app = express();
 
 app.enable('trust proxy');
 
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname,`public`)));
 
 // Global middleware
@@ -71,9 +74,10 @@ app.use((req, res, next) => {
 
 
 // Routes
-
+app.use('/', viewRouter);
 app.use('/api/v1/products', ProductRouter);
 app.use('/api/v1/categories', categorytRouter);
+app.use('/api/v1/subCategories', subCategorytRouter);
 
 
 app.all('*', (req, res, next) => {
