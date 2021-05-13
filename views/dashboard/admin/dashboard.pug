@@ -78,36 +78,12 @@ block content
                     th Status
                     th Reason
                 tbody
-                  tr
-                    td 183
-                    td John Doe
-                    td 11-7-2014
-                    td
-                      span.tag.tag-success Approved
-                    td Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
-                  tr
-                    td 219
-                    td Alexander Pierce
-                    td 11-7-2014
-                    td
-                      span.tag.tag-warning Pending
-                    td Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
-                  tr
-                    td 657
-                    td Bob Doe
-                    td 11-7-2014
-                    td
-                      span.tag.tag-primary Approved
-                    td Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
-                  tr
-                    td 175
-                    td Mike Doe
-                    td 11-7-2014
-                    td
-                      span.tag.tag-danger Denied
-                    td Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
-              // /.card-body
-    // /.card
-
-      // /.container-fluid
-      // /.content
+                - let sum = 0;
+                  each user in users
+                    tr
+                      td= ++sum
+                      td #{user.name}
+                      td= user.phone
+                      td
+                        span.tag.tag-success Approved
+                      td Bacon ipsum dolor sit amet salami venison chicken flank fatback doner

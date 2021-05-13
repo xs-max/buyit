@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcrypt = require('bcryptjs');
 
 
 const userSchema = new mongoose.Schema({
@@ -20,7 +21,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, 'Please provide a password'],
-        minlength: 8,
+        minlength: [8, 'pawword length must be more than 7 digit'],
         select: false
     },
     passwordConfirm: {
@@ -45,6 +46,7 @@ const userSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
+        required : [true, 'A user must have phone number'],
         maxlength: [14, 'Enter a valid phone number'],
         minlength: [7, 'Enter a valid number'],
         validate: {
@@ -57,17 +59,6 @@ const userSchema = new mongoose.Schema({
             },
             message: 'Enter a valid phone number'
         }
-    },
-    ratingsAverage: {
-        type: Number,
-        default: 4.5,
-        min: [1, 'Rating must be above 1.0'],
-        max: [5, 'Rating must be below 5.0'],
-        set: val => Math.round(val * 10) / 10
-    },
-    ratingsQuantity: {
-        type: Number,
-        default: 0
     },
     status: {
         type: String,

@@ -10,10 +10,7 @@ exports.getProduct = factory.getOne(Product);
 
 exports.addProduct = catchAsync(async (res, req, next) => {
     const product = await Product.create(req.body);
-    await User.findByIdAndUpdate(req.user, req.body, {
-        new: true,
-        runValidators: true
-    }) 
+    await User.findByIdAndUpdate(req.user.id, {"role" : "vendor"});
     
     res.status(201).json({
         status: 'success',

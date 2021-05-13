@@ -32,35 +32,35 @@ module.exports = class Email {
     }
 
     // Send the actual mail
-    async send(template, subject) {
-        // 1) Render HTML based on pug template
-        const html = pug.renderFile(`${__dirname}/../views/email/${template}.pug`, {
-            firstName: this.firstName,
-            url: this.url,
-            subject
-        });
+    // async send(template, subject) {
+    //     // 1) Render HTML based on pug template
+    //     const html = pug.renderFile(`${__dirname}/../views/email/${template}.pug`, {
+    //         firstName: this.firstName,
+    //         url: this.url,
+    //         subject
+    //     });
 
 
-        // 2) Define email options
-        const mailOptions = {
-            from: this.from,
-            to: this.to,
-            subject,
-            html,
-            text: htmlToText.fromString(html)
-        }
+    //     // 2) Define email options
+    //     const mailOptions = {
+    //         from: this.from,
+    //         to: this.to,
+    //         subject,
+    //         html,
+    //         text: htmlToText.fromString(html)
+    //     }
 
-        // 3) Create a transport and Send email
-        await this.newTransport().sendMail(mailOptions);
-    }
+    //     // 3) Create a transport and Send email
+    //     await this.newTransport().sendMail(mailOptions);
+    // }
 
-    async sendWelcome() {
-        await this.send('welcome', 'Welcome to the Natours Family');
-    }
+    // async sendWelcome() {
+    //     await this.send('welcome', 'Welcome to the Natours Family');
+    // }
 
-    async sendPasswordReset() {
-        await this.send('passwordReset', 'Your password rest token (valid for 10mins)');
-    }
+    // async sendPasswordReset() {
+    //     await this.send('passwordReset', 'Your password rest token (valid for 10mins)');
+    // }
 }
 
 // const sendEmail = async(options) => {
