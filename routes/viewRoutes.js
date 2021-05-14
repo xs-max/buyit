@@ -1,5 +1,5 @@
 const express = require('express');
-const {getAdminDashboard, getAdminProfile, alert} = require('../controllers/viewsController');
+const {getAdminDashboard, getAdminProfile, alert, getLoginPage, getRegistrationPage} = require('../controllers/viewsController');
 const {isLoggedIn, protect} = require('../controllers/authController');
 
 const router = express.Router();
@@ -11,6 +11,8 @@ router.get('/',
  isLoggedIn, getAdminDashboard);
 router.get('/admin', getAdminDashboard);
 router.get('/admin/profile', getAdminProfile);
+router.get('/login', getLoginPage);
+router.get('/register', getRegistrationPage);
 
 
 module.exports = router;

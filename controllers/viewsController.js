@@ -4,6 +4,15 @@ const catchAsync = require('../utils/cactchAsync');
 
 
 // admin
+
+exports.index = catchAsync( async (req, res, next) => {
+    // fetch data from db
+
+    res.status(200).render('index', {
+        title: 'Home Page'
+    });
+
+})
 exports.getAdminDashboard = catchAsync( async (req, res, next) => {
     // 1) Get tour data from collection
     // const user = await User.findById(req.user.id);
@@ -51,6 +60,18 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
     });
 });
 
+
+exports.getLoginPage = catchAsync(async (req, res, next) => {
+    res.status(200).render('login', {
+        title: 'Login'
+    });
+});
+
+exports.getRegistrationPage = catchAsync(async (req, res, next) => {
+    res.status(200).render('register', {
+        title: 'Register'
+    });
+});
 
 
 exports.alert = (req, res, next) => {

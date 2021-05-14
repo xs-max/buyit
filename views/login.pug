@@ -1,0 +1,68 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  title AdminLTE 3 | Log in
+  // Tell the browser to be responsive to screen width
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  // Font Awesome
+  link(rel='stylesheet' href='/plugins/fontawesome-free/css/all.min.css')
+  // Ionicons
+  link(rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')
+  // icheck bootstrap
+  link(rel='stylesheet' href='/plugins/icheck-bootstrap/icheck-bootstrap.min.css')
+  // Theme style
+  link(rel='stylesheet' href='/dist/css/adminlte.min.css')
+  // Google Font: Source Sans Pro
+  link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700' rel='stylesheet')
+.hold-transition.login-page
+  .login-box
+    .login-logo
+      a(href='../../index2.html')
+        b BUYIT
+    // /.login-logo
+    .card
+      .card-body.login-card-body
+        p.login-box-msg Sign in to start your session
+        form(action='../../index3.html' method='post')
+          .input-group.mb-3
+            input.form-control(type='email' placeholder='Email')
+            .input-group-append
+              .input-group-text
+                span.fas.fa-envelope
+          .input-group.mb-3
+            input.form-control(type='password' placeholder='Password')
+            .input-group-append
+              .input-group-text
+                span.fas.fa-lock
+          .row
+            .col-8
+              .icheck-primary
+                input#remember(type='checkbox')
+                label(for='remember')
+                  | Remember Me
+            // /.col
+            .col-4
+              button.btn.btn-primary.btn-block(type='submit') Sign In
+            // /.col
+        .social-auth-links.text-center.mb-3
+          p - OR -
+          a.btn.btn-block.btn-primary(href='#')
+            i.fab.fa-facebook.mr-2
+            |  Sign in using Facebook
+          a.btn.btn-block.btn-danger(href='#')
+            i.fab.fa-google-plus.mr-2
+            |  Sign in using Google+
+        // /.social-auth-links
+        p.mb-1
+          a(href='forgot-password.html') I forgot my password
+        p.mb-0
+          a.text-center(href='register.html') Register a new membership
+      
+    // /.login-box
+    // jQuery
+    script(src='/plugins/jquery/jquery.min.js')
+    // Bootstrap 4
+    script(src='/plugins/bootstrap/js/bootstrap.bundle.min.js')
+    // AdminLTE App
+    script(src='/dist/js/adminlte.min.js')
