@@ -14,7 +14,6 @@ const cors = require('cors');
 const AppError = require('./utils/appError');
 const ProductRouter = require('./routes/productRoute');
 const categorytRouter = require('./routes/categoryRoute');
-const subCategorytRouter = require('./routes/subCategoryRoute');
 const viewRouter = require('./routes/viewRoutes');
 const userRouter = require('./routes/userRoutes');
 const globalErrorHandler = require('./controllers/errorController');
@@ -79,7 +78,6 @@ app.use((req, res, next) => {
 app.use('/', viewRouter);
 app.use('/api/v1/products', ProductRouter);
 app.use('/api/v1/categories', categorytRouter);
-app.use('/api/v1/subCategories', subCategorytRouter);
 app.use('/api/v1/users', userRouter);
 
 

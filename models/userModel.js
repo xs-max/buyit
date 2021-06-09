@@ -75,6 +75,13 @@ const userSchema = new mongoose.Schema({
 }
 );
 
+// Virtual populate
+userSchema.virtual('products', {
+    ref: 'Product',
+    foreignField: 'user',
+    localField: '_id'
+});
+
 userSchema.pre('save', function(next) {
     if (!this.isModified('password') || this.isNew) {
         return next();

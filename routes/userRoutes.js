@@ -21,7 +21,7 @@ router.patch('/updateMe', uploadUserPhoto, resizeUserPhoto, updateMe);
 router.delete('/deleteMe', deleteMe);
 
 // Restrict routes to admin only
-router.use(restrictTo('admin'));
+// router.use(restrictTo('admin'));
 
 router.route('/')
     .get(getAllUsers)

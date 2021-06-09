@@ -5,7 +5,8 @@ const categorySchema = new mongoose.Schema({
         type: String,
         required: [true, 'A category must have a name'],
         trim: true
-    }
+    },
+    
 },
 {
     toJSON: {virtuals: true},

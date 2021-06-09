@@ -1,14 +1,12 @@
 const express = require('express');
-const {getAdminDashboard, getAdminProfile, alert, getLoginPage, getRegistrationPage} = require('../controllers/viewsController');
+const {getAdminDashboard, getAdminProfile, alert, getLoginPage, getRegistrationPage, index} = require('../controllers/viewsController');
 const {isLoggedIn, protect} = require('../controllers/authController');
 
 const router = express.Router();
 
 router.use(alert);
 
-router.get('/', 
-// createBookingCheckout,
- isLoggedIn, getAdminDashboard);
+router.get('/', index);
 router.get('/admin', getAdminDashboard);
 router.get('/admin/profile', getAdminProfile);
 router.get('/login', getLoginPage);
