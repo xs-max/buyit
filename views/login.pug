@@ -24,14 +24,14 @@ head
     .card
       .card-body.login-card-body
         p.login-box-msg Sign in to start your session
-        form(action='../../index3.html' method='post')
+        form.form
           .input-group.mb-3
-            input.form-control(type='email' placeholder='Email')
+            input#email.form-control(type='email', placeholder='Email', required)
             .input-group-append
               .input-group-text
                 span.fas.fa-envelope
           .input-group.mb-3
-            input.form-control(type='password' placeholder='Password')
+            input#password.form-control(type='password', placeholder='Password', required)
             .input-group-append
               .input-group-text
                 span.fas.fa-lock
@@ -43,7 +43,7 @@ head
                   | Remember Me
             // /.col
             .col-4
-              button.btn.btn-primary.btn-block(type='submit') Sign In
+              button.btn.btn-primary.btn-block(type="submit") Sign In
             // /.col
         .social-auth-links.text-center.mb-3
           p - OR -
@@ -66,3 +66,4 @@ head
     script(src='/plugins/bootstrap/js/bootstrap.bundle.min.js')
     // AdminLTE App
     script(src='/dist/js/adminlte.min.js')
+     script(src='/js/bundule.js')

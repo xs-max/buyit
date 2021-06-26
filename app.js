@@ -17,6 +17,7 @@ const categorytRouter = require('./routes/categoryRoute');
 const viewRouter = require('./routes/viewRoutes');
 const userRouter = require('./routes/userRoutes');
 const globalErrorHandler = require('./controllers/errorController');
+const locationRouter = require('./routes/locationRoute');
 
 // start express app
 const app = express();
@@ -79,6 +80,7 @@ app.use('/', viewRouter);
 app.use('/api/v1/products', ProductRouter);
 app.use('/api/v1/categories', categorytRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/locations', locationRouter);
 
 
 app.all('*', (req, res, next) => {

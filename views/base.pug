@@ -3,35 +3,44 @@ head
     meta(charset='UTF-8')
     meta(http-equiv='X-UA-Compatible' content='IE=edge')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x' crossorigin='anonymous')
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css' integrity='sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l' crossorigin='anonymous')
     link(rel='stylesheet' href='/css/style.css')
     link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css')
     title Document
 .container
     header.header
-        img.logo(src='img/logo.png' alt='buyit logo')
+        a(href="/")
+            img.logo(src='/img/logo.png' alt='buyit logo')
         form.search(action='#')
             input.search__input(type='text' placeholder='Search Products')
             button.search__button
                 svg.search__icon
                     use(xlink:href='/img/sprite.svg#icon-magnifying-glass')
         nav.user-nav
-            .user-nav__icon-box
-                ul
-                    li
-                        a login
-            .user-nav__icon-box
-                ul
-                    li
-                        a register
+            if !user
+                .user-nav__icon-box
+                    ul
+                        li
+                            a login
+            if user
+                user-nav__icon-box
+                    ul
+                        li
+                            a logout
+            if !user
+                .user-nav__icon-box
+                    ul
+                        li
+                            a register
             .user-nav__icon-box
                 ul
                     li
                         a(href='')
                             i.fas.fa-plus-circle.fa-3x.text-color
-            .user-nav__user
-                img.user-nav__user-photo(src='/img/user.jpg' alt='User photo')
-                span.user-nav__user-name Jonas
+            if user 
+                .user-nav__user
+                    img.user-nav__user-photo(src='/img/user.jpg' alt='User photo')
+                    span.user-nav__user-name Jonas
     .content
         nav.sidebar
             ul.side-nav
@@ -39,53 +48,18 @@ head
                     a.side-nav__link(href='#')
                         svg.side-nav__icon
                             use(xlink:href='/img/sprite.svg#icon-home')
-                        span Hotel
-                li.side-nav__item
-                    a.side-nav__link(href='#')
-                        svg.side-nav__icon
-                            use(xlink:href='/img/sprite.svg#icon-aircraft-take-off')
-                        span Flight
-                li.side-nav__item
-                    a.side-nav__link(href='#')
-                        svg.side-nav__icon
-                            use(xlink:href='/img/sprite.svg#icon-key')
-                        span Car rental
-                li.side-nav__item
-                    a.side-nav__link(href='#')
-                        svg.side-nav__icon
-                            use(xlink:href='/img/sprite.svg#icon-map')
-                        span Tours
+                        span CATEGORIES
+                each category in categories            
+                    li.side-nav__item
+                        a.side-nav__link(href=`/products/${category.name}`)
+                            svg.side-nav__icon
+                            span #{category.name}
+                
             .legal
                 | &copy; 2021 by buyit. All rights reserved.
         main.hotel-view
-            .gallery
-                #home.banner
-                    .container-fluid
-                        .row
-                            .col-12
-                                .center-align
-                                    .mt
-                                        //
-                                            <h4 class="white-text">WELCOME TO  </h4>
-                                            <hr width="50%" style="margin-top: 40px">
-                                            <h1 class="blue-text">PRO<span class="light-green-text">FIND</span></h1>
-                                            <p class="white-text" style="font-size: 30px">Where your satisfaction is our heart desire</p>
-            block content
-//
-    <section id="home" class="banner">
-    <div class="container-fluid">
-    <div class="row ">
-    <div class="col-12">
-    <div class="center-align ">
-    <div class="mt">
-    <h4 class="white-text">WELCOME TO  </h4>
-    <hr width="50%" style="margin-top: 40px">
-    <h1 class="blue-text">PRO<span class="light-green-text">FIND</span></h1>
-    <p class="white-text" style="font-size: 30px">Where your satisfaction is our heart desire</p>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </section>
-script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js' integrity='sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4' crossorigin='anonymous')
+        block content
+
+script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js' integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj' crossorigin='anonymous')
+script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js' integrity='sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN' crossorigin='anonymous')
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js' integrity='sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF' crossorigin='anonymous')

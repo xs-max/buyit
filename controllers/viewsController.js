@@ -1,20 +1,91 @@
 const User = require('../models/userModel');
+const Product = require('../models/productModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/cactchAsync');
+const Category = require('../models/categoryModel');
 
 
 // admin
 
 exports.index = catchAsync( async (req, res, next) => {
     // fetch data from db
+    const categories = await Category.find();
+    const products = await Product.find().limit(16);
+    if (!req.user) {
+        var user = null;
+    } else {
+         user = await User.findById(req.user.id);
+     }
+    
 
     res.status(200).render('index', {
-        title: 'Home Page'
+        title: 'Home Page',
+        user,
+        products,
+        categories
     });
 
-})
+});
+
+exports.getProducts = catchAsync( async (req, res, next) => {
+    // fetch product from db
+    const categories = await Category.find();
+    if (!req.user) {
+        var user = null;
+    } else {
+         user = await User.findById(req.user.id);
+     }
+
+    res.status(200).render('products', {
+        title: 'products Page',
+        user,
+        categories
+
+    });
+
+});
+
+exports.getDetails = catchAsync( async (req, res, next) => {
+
+    const categories = await Category.find();
+    const product = await Product.findById(req.params.product).populate('location').populate('user');
+    if (!req.user) {
+        var user = null;
+    } else {
+         user = await User.findById(req.user.id);
+     }
+
+
+
+    res.status(200).render('details', {
+        title: 'PRODUCT DETAILS',
+        user,
+        product,
+        categories
+    })
+});
+
+exports.getAddProduct = catchAsync(async (req, res, next) => {
+
+    const categories = await Category.find();
+    if (!req.user) {
+        var user = null;
+    } else {
+         user = await User.findById(req.user.id);
+     }
+
+    res.status(200).render('addproduct', {
+        title: "NEW PRODUCT",
+        user,
+        categories
+    });
+});
+
+
+
+
 exports.getAdminDashboard = catchAsync( async (req, res, next) => {
-    // 1) Get tour data from collection
+    // 1) Get user data from collection
     // const user = await User.findById(req.user.id);
     const users = await User.find();
     // 2) Build template
@@ -40,10 +111,7 @@ exports.getAdminProfile = catchAsync(async (req, res, next) => {
 });
 
 exports.getVendors = catchAsync(async (req, res, next) => {
-    const users = await User.find({role : 'vendor'}).populate({
-        path : 'products',
-        fields : 'name'
-    });
+    const users = await User.find({role : 'vendor'});
 
     res.status(200).render('dashboard/admin/vendors', {
         title : 'Users',

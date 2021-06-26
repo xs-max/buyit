@@ -83,7 +83,7 @@ exports.getAll = Model => catchAsync(async (req, res, next) => {
             data: {
                 data: doc
             }
-        })
+        });
     
     
 });

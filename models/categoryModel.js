@@ -13,6 +13,12 @@ const categorySchema = new mongoose.Schema({
     toObject: {virtuals: true}
 });
 
+categorySchema.virtual('products', {
+    ref: 'Procduct',
+    foreignField: 'category',
+    localField: '_id'
+});
+
 const Category = mongoose.model('Category', categorySchema);
 
 module.exports = Category;

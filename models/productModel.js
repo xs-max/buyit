@@ -10,12 +10,17 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: [true, 'A product must have a description'],
         minlength: [15, 'Description is too short'],
-        maxlength: [150, 'Description must not Exceed 150 characters']
+        maxlength: [255, 'Description must not Exceed 150 characters']
     },
     user: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',
         required: [true, 'A product must belong to a user']
+    },
+    category: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Category',
+        required: [true, 'A product must belong to a category']
     },
     price: {
         type: Number,
@@ -36,8 +41,8 @@ const productSchema = new mongoose.Schema({
         required: [true, 'A product must have a location']
     },
     negotiable: {
-        type: Boolean,
-        default: false
+        type: String,
+        default: 'Not Negotiable'
     }
 })
 
