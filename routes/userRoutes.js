@@ -20,8 +20,8 @@ router.get('/me', getMe, getUser)
 router.patch('/updateMe', uploadUserPhoto, resizeUserPhoto, updateMe);
 router.delete('/deleteMe', deleteMe);
 
-// Restrict routes to admin only
-// router.use(restrictTo('admin'));
+//Restrict routes to admin only
+router.use(restrictTo('admin'));
 
 router.route('/')
     .get(getAllUsers)
@@ -32,4 +32,4 @@ router.route('/:id')
     .patch(updateUser)
     .delete(deleteUser);
 
-    module.exports = router;
+module.exports = router;
