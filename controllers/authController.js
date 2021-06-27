@@ -24,7 +24,8 @@ const createSendToken = (user, statusCode, req, res) => {
         status: 'success',
         token,
         data: {
-            user: user
+            user: user,
+            base: req.user
         }
     })
 }
@@ -91,7 +92,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     // console.log(decoded);
 
     // 3) check if user still exists
-    const freshUser= await User.findById(decoded.id);
+    const freshUser = await User.findById(decoded.id);
     if (!freshUser) {
         return next(new AppError('The user does no longer exists', 401));
     }

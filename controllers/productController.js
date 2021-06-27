@@ -55,9 +55,15 @@ exports.resizeProductImages = catchAsync(async (req, res, next) => {
 
 exports.getAllProducts = factory.getAll(Product);
 
-exports.getProduct = factory.getOne(Product);
+exports.getProduct = catchAsync(async (req, res, next) => {
+    const product = await Product.findById(req.params.id).populate({path:'user'}).populate({path:'category'}).populate({path: 'location'});
 
-exports.addProduct = catchAsync(async (res, req, next) => {
+    res.status(200).json({
+        product
+    });
+});
+
+exports.addProduct = catchAsync(async (req, res, next) => {
     const product = await Product.create(req.body);
     await User.findByIdAndUpdate(req.user.id, {"role" : "vendor"});
     
